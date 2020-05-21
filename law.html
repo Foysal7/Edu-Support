@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>LLB | Edu-Support</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+
+<style>
+body {margin:0;}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#llb{
+	width: 100%;
+	height: 1000px;
+	background: #e9ebee no-repeat;
+	background-size:cover;
+	button-align: center;
+}
+#file{
+    color: black;
+    line-height: 30px;
+    font-size: 15px;
+    margin-left:40px;
+}
+
+#footer{
+	width: 100%;
+	height: 60px;
+	background: rgba(47, 49, 49, 0.91);
+	line-height: 60px;
+}
+
+#nav2 ul{
+	float: left;
+	margin-left: 20px;
+}
+#nav2 ul li{
+	display: inline-block;
+	list-style-type: none;
+}
+#nav2 ul li a{
+	text-decoration: none;
+	color: white;
+	padding: 10px;
+}
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="service.html">Back</a>
+  <a href="cse.html">CSE</a>
+  <a href="bba.html">BBA</a>
+  <a class="active" href="law.html">LLB</a>
+  <a href="eng.html">ENG</a>
+</div>
+<body>
+<div id= "llb">
+<br>
+<div id = "file">
+
+
+<?php
+include_once 'Admin\file-uploading\dbconfig.php';
+?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" href="Admin\file-uploading\styles.css" type="text/css" />
+</head>
+<body>
+</div>
+<div id="body">
+	<table width="80%" border="1">
+    <tr>
+    </tr>
+    <tr>
+    <td>Book Title</td>
+    <td>Book Type</td>
+    <td>Book Size(KB)</td>
+    <td>Download</td>
+    </tr>
+    <?php
+	$sql="SELECT * FROM llb_uploads";
+	$result_set=mysqli_query($con,$sql);
+	while($row=mysqli_fetch_array($result_set))
+	{
+		?>
+        <tr>
+        <td><?php echo $row['file'] ?></td>
+        <td><?php echo $row['type'] ?></td>
+        <td><?php echo $row['size'] ?></td>
+        <td><a href="Admin\file-uploading\uploads/<?php echo $row['file'] ?>" target="_blank"><button type="button" onclick="alert('Ready for Download.Please Click OK.')">Download File</button></a></td>
+        </tr>
+        <?php
+	}
+	?>
+    </table>
+    
+</div>
+</div>
+</div>
+</body>
+</body>
+</html>
